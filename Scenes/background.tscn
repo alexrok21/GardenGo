@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cb2u1xa2snirr"]
+
+[ext_resource type="Script" path="res://Scripts/background.gd" id="1_fe1hi"]
+[ext_resource type="Texture2D" uid="uid://betkbnj6tyt3x" path="res://assets/backgrounds/backgound_desk.png" id="2_lkohv"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_fe1hi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(540, 954.75)
+scale = Vector2(1, 1.78319)
+texture = ExtResource("2_lkohv")

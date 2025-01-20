@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3s4v476bx4im"]
+
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_17sqh"]
+[ext_resource type="PackedScene" uid="uid://cb2u1xa2snirr" path="res://Scenes/background.tscn" id="1_yhha4"]
+[ext_resource type="Texture2D" uid="uid://c00xchs3sh08n" path="res://assets/Others/button_pressed.png" id="3_s057h"]
+[ext_resource type="Texture2D" uid="uid://p8p7sc81p1gp" path="res://assets/Others/button_normal.png" id="4_q61xj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bfit7"]
+texture = ExtResource("3_s057h")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h03nh"]
+texture = ExtResource("4_q61xj")
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_17sqh")
+
+[node name="Background" parent="." instance=ExtResource("1_yhha4")]
+
+[node name="Plant" type="Node2D" parent="Background"]
+
+[node name="PlantingButton" type="Button" parent="."]
+offset_left = 321.0
+offset_top = 128.0
+offset_right = 738.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bfit7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h03nh")
+text = "Plantar"
+
+[node name="HarvestButton" type="Button" parent="."]
+visible = false
+offset_left = 321.0
+offset_top = 1704.0
+offset_right = 738.0
+offset_bottom = 1808.0
+theme_override_font_sizes/font_size = 48
+theme_override_styles/pressed = SubResource("StyleBoxTexture_bfit7")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h03nh")
+text = "Cosechar"
+
+[connection signal="pressed" from="PlantingButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HarvestButton" to="." method="_on_harvest_button_pressed"]
+[connection signal="pressed" from="HarvestButton" to="." method="_on_planting_button_pressed"]
