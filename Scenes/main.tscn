@@ -39,6 +39,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_bfit7")
 theme_override_styles/normal = SubResource("StyleBoxTexture_h03nh")
 text = "Cosechar"
 
-[connection signal="pressed" from="PlantingButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PlantingButton" to="." method="_on_planting_button_pressed"]
 [connection signal="pressed" from="HarvestButton" to="." method="_on_harvest_button_pressed"]
-[connection signal="pressed" from="HarvestButton" to="." method="_on_planting_button_pressed"]

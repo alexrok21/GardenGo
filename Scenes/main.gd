@@ -16,22 +16,29 @@ func plant_seed():
 	plant_node.add_child(current_plant)  # Agrega la planta al nodo Plant
 	
 	var sprite = $Background/Sprite2D
-	var center_position = sprite.texture.get_size() / 3
+	var center_position = sprite.texture.get_size() / 2
 	current_plant.position = center_position  # Posiciona la planta en el centro
+	
+	# Mostrar los atributos de la planta actual
+	print("BlueBell Attributes:")
+	print("Seed yield:", current_plant.seed_yield)
+	print("Growth stages:", current_plant.growth_stages)
+	print("Water tolerance:", current_plant.water_tolerance)
+	print("Rarity:", current_plant.rarity)
 
 func _on_planting_button_pressed():
 	plant_seed()  # Llama a la función que instancia la planta
 	planting_button.visible = false  # Oculta el botón de plantar
 	harvest_button.visible = false  # Asegura que el botón de cosechar esté oculto
 
-func _process(delta):
-	# Verifica si la planta ha terminado su ciclo de crecimiento
-	if current_plant and current_plant.harvest_ready:
-		harvest_button.visible = true  # Muestra el botón "Cosechar"
-
-func _on_HarvestButton_pressed():
+func _on_harvest_button_pressed():
 	if current_plant:
 		current_plant.queue_free()  # Elimina la planta actual
 		current_plant = null  # Limpia la referencia a la planta
 	planting_button.visible = true  # Muestra el botón "Plantar"
 	harvest_button.visible = false  # Oculta el botón "Cosechar"
+
+func _process(_delta):
+	# Verifica si la planta ha terminado su ciclo de crecimiento
+	if current_plant and current_plant.harvest_ready:
+		harvest_button.visible = true  # Muestra el botón "Cosechar"
