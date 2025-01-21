@@ -1,9 +1,22 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3s4v476bx4im"]
+[gd_scene load_steps=11 format=3 uid="uid://b3s4v476bx4im"]
 
 [ext_resource type="Script" path="res://Scenes/main.gd" id="1_17sqh"]
 [ext_resource type="PackedScene" uid="uid://cb2u1xa2snirr" path="res://Scenes/background.tscn" id="1_yhha4"]
+[ext_resource type="Texture2D" uid="uid://q1wwd4ykfbd6" path="res://assets/Others/water_drop.png" id="3_hyuos"]
 [ext_resource type="Texture2D" uid="uid://c00xchs3sh08n" path="res://assets/Others/button_pressed.png" id="3_s057h"]
 [ext_resource type="Texture2D" uid="uid://p8p7sc81p1gp" path="res://assets/Others/button_normal.png" id="4_q61xj"]
+
+[sub_resource type="Animation" id="Animation_2ey8c"]
+resource_name = "water_drop"
+
+[sub_resource type="Animation" id="Animation_2ddw0"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmbd5"]
+_data = {
+"RESET": SubResource("Animation_2ddw0"),
+"water_drop": SubResource("Animation_2ey8c")
+}
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bfit7"]
 texture = ExtResource("3_s057h")
@@ -17,6 +30,20 @@ script = ExtResource("1_17sqh")
 [node name="Background" parent="." instance=ExtResource("1_yhha4")]
 
 [node name="Plant" type="Node2D" parent="Background"]
+
+[node name="Watering" type="Node2D" parent="Background"]
+
+[node name="WaterSprite" type="Sprite2D" parent="Background/Watering"]
+position = Vector2(949, 232)
+scale = Vector2(0.073416, 0.080222)
+texture = ExtResource("3_hyuos")
+region_enabled = true
+region_rect = Rect2(280, 705, 1119, 1591)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Watering"]
+libraries = {
+"": SubResource("AnimationLibrary_cmbd5")
+}
 
 [node name="PlantingButton" type="Button" parent="."]
 offset_left = 321.0
